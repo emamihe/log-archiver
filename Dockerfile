@@ -5,7 +5,6 @@ WORKDIR /app
 RUN apk add gcc && \
     apk add libc-dev && \
     pip install --upgrade pip && \
-    pip install -r requirements.txt && \
-    mkdir /var/log/log-archiver && \
-    mkdir /var/lib/log-archiver
+    pip install -r requirements.txt
+VOLUME ["/var/lib/log-archiver", "/var/log/log-archiver"]
 CMD ["python", "/app/archiver.py", "--config", "config.json"]
